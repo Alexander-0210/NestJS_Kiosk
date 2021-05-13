@@ -1,4 +1,7 @@
 import { Module } from '@nestjs/common';
+import { SupplyTransactionController } from './supply-transaction.controller';
 
-@Module({})
+@Module({
+  controllers: [SupplyTransactionController]
+})
 export class SupplyTransactionModule {}

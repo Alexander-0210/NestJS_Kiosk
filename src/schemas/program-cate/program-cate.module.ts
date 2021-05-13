@@ -1,4 +1,7 @@
 import { Module } from '@nestjs/common';
+import { ProgramCateController } from './program-cate.controller';
 
-@Module({})
+@Module({
+  controllers: [ProgramCateController]
+})
 export class ProgramCateModule {}

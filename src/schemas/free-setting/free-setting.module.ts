@@ -1,4 +1,7 @@
 import { Module } from '@nestjs/common';
+import { FreeSettingController } from './free-setting.controller';
 
-@Module({})
+@Module({
+  controllers: [FreeSettingController]
+})
 export class FreeSettingModule {}

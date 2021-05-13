@@ -1,4 +1,7 @@
 import { Module } from '@nestjs/common';
+import { JobFinishedController } from './job-finished.controller';
 
-@Module({})
+@Module({
+  controllers: [JobFinishedController]
+})
 export class JobFinishedModule {}

@@ -1,4 +1,7 @@
 import { Module } from '@nestjs/common';
+import { ServiceDayController } from './service-day.controller';
 
-@Module({})
+@Module({
+  controllers: [ServiceDayController]
+})
 export class ServiceDayModule {}

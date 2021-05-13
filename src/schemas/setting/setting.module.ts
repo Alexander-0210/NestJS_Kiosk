@@ -1,4 +1,7 @@
 import { Module } from '@nestjs/common';
+import { SettingController } from './setting.controller';
 
-@Module({})
+@Module({
+  controllers: [SettingController]
+})
 export class SettingModule {}
