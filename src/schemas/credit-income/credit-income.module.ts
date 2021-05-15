@@ -1,9 +1,13 @@
 import { Module } from '@nestjs/common';
 import { CreditIncomeController } from './credit-income.controller';
 import { CreditIncomeService } from './credit-income.service';
+import { MongooseModule } from '@nestjs/mongoose';
+import { CreditIncome, CreditIncomeSchema } from './schema/credit-income.schema';
 
 @Module({
+  imports: [MongooseModule.forFeature([{ name: CreditIncome.name, schema: CreditIncomeSchema }])],
   controllers: [CreditIncomeController],
-  providers: [CreditIncomeService]
+  providers: [CreditIncomeService],
+  exports: [CreditIncomeService]
 })
 export class CreditIncomeModule {}

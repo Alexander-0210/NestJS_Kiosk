@@ -1,4 +1,4 @@
-export class creditIncome{
+export class CreditIncomeDto{
     id:number;
     user_id:number;
     name:string;

@@ -2,8 +2,12 @@ import { Module } from '@nestjs/common';
 import { SupplyTransactionController } from './supply-transaction.controller';
 import { SupplyTransactionService } from './supply-transaction.service';
 
+import { MongooseModule } from '@nestjs/mongoose';
+import { SupplyTransactionSchema, SupplyTransaction } from './schema/supply-transaction.schema';
 @Module({
+  imports: [MongooseModule.forFeature([{ name: SupplyTransaction.name, schema: SupplyTransactionSchema }])],
   controllers: [SupplyTransactionController],
-  providers: [SupplyTransactionService]
+  providers: [SupplyTransactionService],
+  exports:[SupplyTransactionService]
 })
 export class SupplyTransactionModule {}

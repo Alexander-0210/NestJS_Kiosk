@@ -1,4 +1,4 @@
-export class homeBankState{
+export class HomeBankStateDto{
     id:number;
     coin:number;
     prev_count:number;

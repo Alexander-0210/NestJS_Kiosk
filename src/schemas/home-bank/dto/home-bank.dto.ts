@@ -1,4 +1,4 @@
-export class homeBank{
+export class HomeBankDto{
     id:number;
     coin:number;
     count:number;

@@ -1,4 +1,4 @@
-export class jobFinished{
+export class JobFinishedDto{
     id:number;
     user_id:number;
     machine_id:number;

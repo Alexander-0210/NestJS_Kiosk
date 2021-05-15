@@ -1,4 +1,4 @@
-export class job{
+export class JobDto{
     id:number;
     user_id:number;
     machine_id:number;

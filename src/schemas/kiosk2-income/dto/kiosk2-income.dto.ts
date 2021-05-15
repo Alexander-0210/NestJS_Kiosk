@@ -1,4 +1,4 @@
-export class kiosk2Income{
+export class Kiosk2IncomeDto{
     id:number;
     type:string;
     price:number;

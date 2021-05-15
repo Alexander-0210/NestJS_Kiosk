@@ -1,4 +1,4 @@
-export class log{
+export class LogDto{
     id:number;
     machine_id:number;
     dt:Date;

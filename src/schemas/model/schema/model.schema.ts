@@ -1,10 +1,10 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document } from 'mongoose';
 
-export type ModelDocument = Model & Document;
+export type ModelDocument = ModelCls & Document;
 
 @Schema()
-export class Model {
+export class ModelCls {
   @Prop()
   id:number;
 
@@ -18,4 +18,4 @@ export class Model {
   weight:number;
 }
 
-export const ModelSchema = SchemaFactory.createForClass(Model);
+export const ModelSchema = SchemaFactory.createForClass(ModelCls);
