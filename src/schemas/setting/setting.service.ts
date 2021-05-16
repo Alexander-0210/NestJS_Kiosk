@@ -22,4 +22,9 @@ export class SettingService {
     async findOneByID(phone) : Promise<Setting> {
         return this.userModel.findOne({phone}).exec();
     }
+
+    async findKioskIncomeClearTime() : Promise<Setting>{
+        var keyword = "kiosk_income_clear_time";
+        return this.userModel.findOne({keyword}).exec();
+    }
 }

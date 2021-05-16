@@ -18,6 +18,10 @@ export class KioskIncomeService {
     async findAll() : Promise<KioskIncome[]> {
         return this.kioskModel.find().exec();
     }
+    
+    async findByDate(date) : Promise<KioskIncome[]> {
+        return this.kioskModel.find({value: { $gte: date}}).exec();
+    }
 
     async findOneByID(phone) : Promise<KioskIncome> {
         return this.kioskModel.findOne({phone}).exec();
