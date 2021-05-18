@@ -22,4 +22,9 @@ export class UserController {
         console.log(params.name);
         return this.userService.findOneByID(params.name);
     }
+    
+    @Get()
+    async findKioskJoined():Promise<any>{
+        return this.userService.findJoined();
+    }  
 }

@@ -7,7 +7,7 @@ import {SettingService} from '../schemas/setting/setting.service';
 import {Setting} from '../schemas/setting/schema/setting.schema';
 
 import {KioskIncomeService} from '../schemas/kiosk-income/kiosk-income.service';
-import {KioskIncome} from '../schemas/kiosk-income/schema/kiosk-income.schema';
+import {KioskIncome, KioskIncomeDocument} from '../schemas/kiosk-income/schema/kiosk-income.schema';
 import { CMSKioskIncome } from './schema/cms.schema';
 
 import {CmsService} from './cms.service';
@@ -38,8 +38,9 @@ export class CmsController {
 
     // Get Kiosk Income with user Phone
     @Get('incomes')
-    getKioskIncome(): Promise<KioskIncome[]>{
-        return this.kioskService.findJoinedUserPhone();
+    async getKioskIncome(): Promise<KioskIncome[]> {
+        var tmp = await this.settingService.findKioskIncomeClearTime();
+        return this.kioskService.findJoinedUserPhone(tmp);   
     }
 
     // Get Kiosk Income
@@ -49,14 +50,14 @@ export class CmsController {
     }
     
     @Get('income_time')
-    getKioskIncomeTime(): Promise<Setting>{
+    getKioskIncomeTime(): Promise<Date>{
         return this.settingService.findKioskIncomeClearTime();
     }
-/*
-    @Get('cms_kiosk')
-    getPopulate() : Promise<CMSKioskIncome[]>{
-        return this.cmsService.findAll();
+
+    @Get('user_kiosk')
+    getPopulate() : Promise<any>{
+        return this.userService.findJoined();
     }
 
-*/
+
 }

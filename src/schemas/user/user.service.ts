@@ -26,4 +26,8 @@ export class UserService {
     async findOneByID(phone) : Promise<User> {
         return this.userModel.findOne({phone}).exec();
     }
+
+    async findJoined() : Promise<any>{
+        return this.userModel.find().populate('kiosk_price').exec();
+    }
 }

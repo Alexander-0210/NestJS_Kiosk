@@ -1,9 +1,10 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { Document, VirtualType } from 'mongoose';
+import { KioskIncome } from 'src/schemas/kiosk-income/schema/kiosk-income.schema';
 
 export type UserDocument = User & Document;
 
-@Schema()
+@Schema({autoIndex: true, toJSON: {virtuals: true}})
 export class User{
     @Prop()
     Id:number;
@@ -43,3 +44,11 @@ export class User{
 }
 
 export const UserSchema = SchemaFactory.createForClass(User);
+
+UserSchema.virtual('kiosk_price', {
+    ref: 'KioskIncome',
+    localField:'Id',
+    foreignField :'user_id',
+    //justOne: false,
+    // match: { isActive: true }
+  });

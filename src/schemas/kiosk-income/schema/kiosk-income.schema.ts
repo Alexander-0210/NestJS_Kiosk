@@ -4,7 +4,8 @@ import { User } from 'src/schemas/user/schema/user.schema';
 
 export type KioskIncomeDocument = KioskIncome & Document;
 
-@Schema()
+//@ModelOptions({autoIndex: true, toJSON: {virtuals: true}})
+@Schema({autoIndex: true, toJSON: {virtuals: true}})
 export class KioskIncome {
   @Prop()
   id:number;
@@ -25,10 +26,11 @@ export class KioskIncome {
 
 export const KioskIncomeSchema = SchemaFactory.createForClass(KioskIncome);
 
-KioskIncomeSchema.virtual('User', {
-  ref: User.name,
+KioskIncomeSchema.virtual('user_phone', {
+  ref: 'User',
   localField:'user_id',
   foreignField :'Id',
   justOne: false,
   // match: { isActive: true }
 });
+

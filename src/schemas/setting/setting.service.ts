@@ -20,11 +20,12 @@ export class SettingService {
     }
 
     async findOneByID(phone) : Promise<Setting> {
-        return this.userModel.findOne({phone}).exec();
+        return this.userModel.findOne({phone}).exec();        
     }
 
-    async findKioskIncomeClearTime() : Promise<Setting>{
+    async findKioskIncomeClearTime() : Promise<Date> {
         var keyword = "kiosk_income_clear_time";
-        return this.userModel.findOne({keyword}).exec();
+        var tmp = this.userModel.findOne({keyword}).exec();
+        return (await tmp).value;
     }
 }

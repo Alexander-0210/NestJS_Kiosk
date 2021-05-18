@@ -19,8 +19,12 @@ export class KioskIncomeService {
         return this.kioskModel.find().exec();
     }
     
-    async findJoinedUserPhone() : Promise<KioskIncome[]> {
-        return this.kioskModel.find().populate('User').exec();
+    async findJoinedUserPhone(min_date:Date) : Promise<any> {
+        console.log(min_date);
+        //return this.kioskModel.find({dt: {$gt: min_date}}).populate('user_phone', 'phone').exec();
+        //return this.kioskModel.find().populate('user_phone', 'phone').exec();
+        //return this.kioskModel.find({Id:{$gte:10}}).populate('user_phone', 'phone').exec();
+        return this.kioskModel.find({dt:{$gte:min_date}}).populate('user_phone', 'phone').exec();
     }
     
     async findByDate(date) : Promise<KioskIncome[]> {
@@ -30,5 +34,4 @@ export class KioskIncomeService {
     async findOneByID(phone) : Promise<KioskIncome> {
         return this.kioskModel.findOne({phone}).exec();
     }
-
 }
