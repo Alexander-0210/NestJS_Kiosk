@@ -1,4 +1,4 @@
-import { Controller, Get, Param, Res } from '@nestjs/common';
+import { Controller, Get, HttpStatus, Param, Res } from '@nestjs/common';
 
 import { UserService } from '../schemas/user/user.service';
 import { User } from '../schemas/user/schema/user.schema';
@@ -38,9 +38,10 @@ export class CmsController {
 
     // Get Kiosk Income with user Phone
     @Get('incomes')
-    async getKioskIncome(): Promise<KioskIncome[]> {
+    public async getKioskIncome(@Res() res) {
         var tmp = await this.settingService.findKioskIncomeClearTime();
-        return this.kioskService.findJoinedUserPhone(tmp);   
+        var ret_vals = await this.kioskService.findJoinedUserPhone(tmp); 
+        return res.status(HttpStatus.OK).json(ret_vals);  
     }
 
     // Get Kiosk Income
@@ -50,7 +51,7 @@ export class CmsController {
     }
     
     @Get('income_time')
-    getKioskIncomeTime(): Promise<Date>{
+    getKioskIncomeTime(): Promise<string>{
         return this.settingService.findKioskIncomeClearTime();
     }
 
@@ -58,6 +59,4 @@ export class CmsController {
     getPopulate() : Promise<any>{
         return this.userService.findJoined();
     }
-
-
 }

@@ -12,7 +12,7 @@ export class Setting {
   keyword:string;
 
   @Prop()
-  value:Date;
+  value:string;
 }
 
 export const SettingSchema = SchemaFactory.createForClass(Setting);

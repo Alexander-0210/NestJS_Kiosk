@@ -23,7 +23,7 @@ export class SettingService {
         return this.userModel.findOne({phone}).exec();        
     }
 
-    async findKioskIncomeClearTime() : Promise<Date> {
+    async findKioskIncomeClearTime() : Promise<string> {
         var keyword = "kiosk_income_clear_time";
         var tmp = this.userModel.findOne({keyword}).exec();
         return (await tmp).value;

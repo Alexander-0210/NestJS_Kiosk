@@ -1,6 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 import { Document, Types, Schema as MongooseSchema } from 'mongoose';
-import { User } from 'src/schemas/user/schema/user.schema';
 
 export type KioskIncomeDocument = KioskIncome & Document;
 
@@ -20,7 +19,7 @@ export class KioskIncome {
   cnt:number;
   
   @Prop()
-  dt:Date;
+  dt:string;
 
 }
 
@@ -30,7 +29,7 @@ KioskIncomeSchema.virtual('user_phone', {
   ref: 'User',
   localField:'user_id',
   foreignField :'Id',
-  justOne: false,
+  //justOne: false,
   // match: { isActive: true }
 });
 
