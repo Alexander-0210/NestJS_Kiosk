@@ -40,8 +40,21 @@ export class CmsController {
     @Get('incomes')
     public async getKioskIncome(@Res() res) {
         var tmp = await this.settingService.findKioskIncomeClearTime();
-        var ret_vals = await this.kioskService.findJoinedUserPhone(tmp); 
-        return res.status(HttpStatus.OK).json(ret_vals);  
+        var ret_vals = await this.kioskService.findJoinedUserPhone(tmp);
+        var total_val = 0;
+        var bills = [];
+        for(var i = 0; i < ret_vals.length; i++){
+            var counter = 0;
+            if(ret_vals[i]['price'] == null)
+                continue;
+            if((ret_vals[i]['price'].toString() in bills) == true){
+                counter = bills[ret_vals[i]['price']]
+            }
+            counter += ret_vals[i]['cnt'];
+            bills[ret_vals[i]['price'].toString()] = counter;
+            total_val += ret_vals[i]['price']*ret_vals[i]['cnt'];
+        }
+        return res.status(HttpStatus.OK).json({data:ret_vals, total:total_val, bill:bills});  
     }
 
     // Get Kiosk Income
