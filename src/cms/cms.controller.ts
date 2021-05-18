@@ -36,10 +36,15 @@ export class CmsController {
         return this.userService.findAllFromPhoneBalance();
     }
 
-    // Get Kiosk Income
+    // Get Kiosk Income with user Phone
     @Get('incomes')
     getKioskIncome(): Promise<KioskIncome[]>{
-        //var tmpTime:Promise<Setting> = this.settingService.findKioskIncomeClearTime();
+        return this.kioskService.findJoinedUserPhone();
+    }
+
+    // Get Kiosk Income
+    @Get('incomes_all')
+    getKioskIncomeAll(): Promise<KioskIncome[]>{
         return this.kioskService.findAll();
     }
     
@@ -47,9 +52,11 @@ export class CmsController {
     getKioskIncomeTime(): Promise<Setting>{
         return this.settingService.findKioskIncomeClearTime();
     }
-
+/*
     @Get('cms_kiosk')
     getPopulate() : Promise<CMSKioskIncome[]>{
         return this.cmsService.findAll();
     }
+
+*/
 }

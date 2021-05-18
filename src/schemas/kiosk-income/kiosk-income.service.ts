@@ -19,6 +19,10 @@ export class KioskIncomeService {
         return this.kioskModel.find().exec();
     }
     
+    async findJoinedUserPhone() : Promise<KioskIncome[]> {
+        return this.kioskModel.find().populate('User').exec();
+    }
+    
     async findByDate(date) : Promise<KioskIncome[]> {
         return this.kioskModel.find({value: { $gte: date}}).exec();
     }

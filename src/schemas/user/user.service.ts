@@ -16,9 +16,7 @@ export class UserService {
     }
 
     async findAllFromPhoneBalance() : Promise<User[]> {
-        //var query = {phone:1, balance:1};
         return this.userModel.find({}, "balance phone").exec();
-        //return this.userModel.find().exec();
     }
     
     async findAll() : Promise<User[]> {
@@ -28,10 +26,4 @@ export class UserService {
     async findOneByID(phone) : Promise<User> {
         return this.userModel.findOne({phone}).exec();
     }
-/*
-    async findAllKiosks(kiosk_date) : Promise<User> {
-        var query = {}
-        //return this.userModel.ag
-    }
-    */
 }
