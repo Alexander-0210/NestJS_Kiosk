@@ -1,5 +1,5 @@
 import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
-import { Document } from 'mongoose';
+import { Document, Types, Schema as MongooseSchema } from 'mongoose';
 
 export type KioskIncomeDocument = KioskIncome & Document;
 
@@ -8,7 +8,7 @@ export class KioskIncome {
   @Prop()
   id:number;
   
-  @Prop()
+  @Prop({ type: MongooseSchema.Types.ObjectId , ref: 'user.id' })
   user_id:number;
   
   @Prop()

@@ -8,13 +8,16 @@ import {Setting} from '../schemas/setting/schema/setting.schema';
 
 import {KioskIncomeService} from '../schemas/kiosk-income/kiosk-income.service';
 import {KioskIncome} from '../schemas/kiosk-income/schema/kiosk-income.schema';
+import { CMSKioskIncome } from './schema/cms.schema';
+
+import {CmsService} from './cms.service';
 @Controller('cms')
-export class CmsController {
-    
+export class CmsController {    
     constructor(
         private userService : UserService,
         private settingService : SettingService,
         private kioskService : KioskIncomeService,
+        private cmsService:CmsService
         ) {}
 
     @Get()
@@ -36,16 +39,17 @@ export class CmsController {
     // Get Kiosk Income
     @Get('incomes')
     getKioskIncome(): Promise<KioskIncome[]>{
-        var tmpTime:Promise<Setting> = this.settingService.findKioskIncomeClearTime();
-        console.log(tmpTime[0]);
-        var date = tmpTime[0].value;    
-        console.log(date);   
-        return this.kioskService.findByDate(date);
+        //var tmpTime:Promise<Setting> = this.settingService.findKioskIncomeClearTime();
+        return this.kioskService.findAll();
     }
-
     
     @Get('income_time')
     getKioskIncomeTime(): Promise<Setting>{
         return this.settingService.findKioskIncomeClearTime();
+    }
+
+    @Get('cms_kiosk')
+    getPopulate() : Promise<CMSKioskIncome[]>{
+        return this.cmsService.findAll();
     }
 }
