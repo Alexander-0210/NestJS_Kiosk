@@ -8,7 +8,7 @@ import {Setting} from '../schemas/setting/schema/setting.schema';
 
 import {KioskIncomeService} from '../schemas/kiosk-income/kiosk-income.service';
 import {KioskIncome, KioskIncomeDocument} from '../schemas/kiosk-income/schema/kiosk-income.schema';
-import { CMSKioskIncome } from './schema/cms.schema';
+//import { CMSKioskIncome } from './schema/cms.schema';
 
 import {CmsService} from './cms.service';
 import { Kiosk2IncomeService } from 'src/schemas/kiosk2-income/kiosk2-income.service';
@@ -270,35 +270,35 @@ export class CmsController {
 
     // http://localhost/Cms/models
     @Get('models')
-    public async getModels(@Res() res) {
+    public async models(@Res() res) {
         var ret_vals = await this.modelService.findAll();
         return res.status(HttpStatus.OK).json({data:ret_vals});  
     }
 
     // http://localhost/Cms/programs
     @Get('programs')
-    public async getPrograms(@Res() res) {
+    public async programs(@Res() res) {
         var ret_vals = await this.programService.findAll();
         return res.status(HttpStatus.OK).json({data:ret_vals});  
     }
     
     // http://localhost/Cms/services
     @Get('services')
-    public async getServices(@Res() res) {
+    public async services(@Res() res) {
         var ret_vals = await this.servService.findAll();
         return res.status(HttpStatus.OK).json({data:ret_vals});  
     }
     
     // http://localhost/Cms/dryer_spins
     @Get('dryer_spins')
-    public async getDryerSpins(@Res() res) {
+    public async dryer_spins(@Res() res) {
         var ret_vals = await this.serviceDryerService.findAllWithModel();
         return res.status(HttpStatus.OK).json({data:ret_vals});  
     }
 
     // http://localhost/Cms/day_services
     @Get('day_services')
-    public async getDayServices(@Res() res) {
+    public async day_services(@Res() res) {
         var model = await this.modelService.findAll();
         var program = await this.programService.findAll();
         var day = await this.dayService.findAll();
@@ -306,41 +306,86 @@ export class CmsController {
     }
     // http://localhost/Cms/options
     @Get('options')
-    public async getOptons(@Res() res) {        
+    public async options(@Res() res) {        
         var option = await this.optionService.findAll();
         return res.status(HttpStatus.OK).json({data:option});  
     }
 
     // http://localhost/Cms/soaps
     @Get('soaps')
-    public async getSoaps(@Res() res) {        
+    public async soaps(@Res() res) {        
         var option = await this.soapService.findAll();
         return res.status(HttpStatus.OK).json({data:option});  
     }
 
     // http://localhost/Cms/machines
     @Get('machines')
-    public async getMachinesSoaps(@Res() res) {        
+    public async machines(@Res() res) {        
         var option = await this.machineService.findAll();
         return res.status(HttpStatus.OK).json({data:option});  
     }
+
     // http://localhost/Cms/jobs
     @Get('jobs')
-    public async getJobs(@Res() res) {        
+    public async jobs(@Res() res) {        
         var option = await this.jobService.findAllWithUserInfo();
         return res.status(HttpStatus.OK).json({data:option});  
-    }
-
+    }    
+    
     // http://localhost/Cms/supplys
     @Get('supplys')
-    public async getSupplys(@Res() res) {        
+    public async supplys(@Res() res) {        
         var option = await this.supplyService.findAll();
         return res.status(HttpStatus.OK).json({data:option});  
     }
 
+    /**
+     * 
+     *      Details APIs
+     * 
+     */
+    
+    // http://localhost/Cms/washer_time_detail
+    @Get('washer_time_detail')
+    public async washer_time_detail(@Res() res) {        
+        return res.status(HttpStatus.OK).json("washer_time_detail");  
+    }
 
+    // http://localhost/Cms/washer_time_summary
+    @Get('washer_time_summary')
+    public async washer_time_summary(@Res() res) {        
+        return res.status(HttpStatus.OK).json("washer_time_summary");  
+    }
 
+    // http://localhost/Cms/dryer_activity_details
+    @Get('dryer_activity_details')
+    public async dryer_activity_details(@Res() res) {        
+        return res.status(HttpStatus.OK).json("dryer_activity_details");  
+    }
 
+    // http://localhost/Cms/dryer_details
+    @Get('dryer_details')
+    public async dryer_details(@Res() res) {        
+        return res.status(HttpStatus.OK).json("dryer_details");  
+    }
+
+    // http://localhost/Cms/dryer_summary
+    @Get('dryer_summary')
+    public async dryer_summary(@Res() res) {        
+        return res.status(HttpStatus.OK).json("dryer_summary");  
+    }
+
+    // http://localhost/Cms/dryer_time_detail
+    @Get('dryer_time_detail')
+    public async dryer_time_detail(@Res() res) {        
+        return res.status(HttpStatus.OK).json("dryer_time_detail");  
+    }
+
+    // http://localhost/Cms/dryer_time_summary
+    @Get('dryer_time_summary')
+    public async dryer_time_summary(@Res() res) {        
+        return res.status(HttpStatus.OK).json("dryer_time_summary");  
+    }
 
 
 

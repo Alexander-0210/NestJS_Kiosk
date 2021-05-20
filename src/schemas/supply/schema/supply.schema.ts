@@ -3,7 +3,7 @@ import { Document } from 'mongoose';
 
 export type SupplyDocument = Supply & Document;
 
-@Schema(/*{autoIndex: true, toJSON: {virtuals: true}}*/)
+@Schema()
 export class Supply {
   @Prop()
   id:number;
@@ -22,10 +22,3 @@ export class Supply {
 }
 
 export const SupplySchema = SchemaFactory.createForClass(Supply);
-/*
-SupplySchema.virtual('model_combine', {
-  ref: 'Model',
-  localField:'model_id',
-  foreignField :'Id',
-});
-*/

@@ -2,7 +2,6 @@ import { Module } from '@nestjs/common';
 
 import { CmsController } from './cms.controller';
 import { CmsService } from './cms.service';
-import { CMSKioskIncome, CMSUser, CMSKioskIncomeSchema, CMSUserSchema} from './schema/cms.schema';
 
 import { UserModule } from 'src/schemas/user/user.module';
 import { SettingModule } from 'src/schemas/setting/setting.module';
@@ -30,8 +29,8 @@ import { SupplyModule } from 'src/schemas/supply/supply.module';
 
 @Module({ 
     imports:
-    [MongooseModule.forFeature([{ name: 'kiosk_income', schema: CMSKioskIncomeSchema },
-    { name: 'user', schema: CMSUserSchema }]),
+    [// MongooseModule.forFeature([{ name: 'kiosk_income', schema: CMSKioskIncomeSchema },
+    // { name: 'user', schema: CMSUserSchema }]),
      UserModule, SettingModule, KioskIncomeModule, Kiosk2IncomeModule, CreditIncomeModule,
      TransactionModule, WashFoldModule, SupplyTransactionModule, HomeBankModule,PromotionModule,
      SpecialModule, FreeSettingModule, ModelModule, ProgramModule, ServiceModule, ServiceDryerModule,
