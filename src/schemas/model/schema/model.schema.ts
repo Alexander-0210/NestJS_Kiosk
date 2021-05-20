@@ -6,7 +6,7 @@ export type ModelDocument = ModelCls & Document;
 @Schema()
 export class ModelCls {
   @Prop()
-  id:number;
+  Id:number;
 
   @Prop()
   model:string;

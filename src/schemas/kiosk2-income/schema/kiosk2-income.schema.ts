@@ -19,7 +19,7 @@ export class Kiosk2Income {
   cnt:number;
     
   @Prop()
-  dt:Date;
+  dt:string;
     
   @Prop()
   hopper_coins:string;

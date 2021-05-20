@@ -3,7 +3,7 @@ import { Document } from 'mongoose';
 
 export type JobDocument = Job & Document;
 
-@Schema()
+@Schema({autoIndex: true, toJSON: {virtuals: true}})
 export class Job {
   @Prop()
   id:number;
@@ -37,3 +37,19 @@ export class Job {
 }
 
 export const JobSchema = SchemaFactory.createForClass(Job);
+
+JobSchema.virtual('user_info', {
+  ref: 'User',
+  localField:'user_id',
+  foreignField :'Id',
+  //justOne: false,
+  // match: { isActive: true }
+});
+
+JobSchema.virtual('program_info', {
+  ref: 'Program',
+  localField:'program_id',
+  foreignField :'Id',
+  //justOne: false,
+  // match: { isActive: true }
+});

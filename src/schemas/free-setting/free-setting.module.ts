@@ -5,7 +5,7 @@ import { FreeSettingService } from './free-setting.service';
 import { MongooseModule } from '@nestjs/mongoose';
 import { FreeSettingSchema, FreeSetting } from './schema/free-setting.schema';
 @Module({
-  imports: [MongooseModule.forFeature([{ name: FreeSetting.name, schema: FreeSettingSchema }])],
+  imports: [MongooseModule.forFeature([{ name: 'Free_Setting', schema: FreeSettingSchema }])],
   controllers: [FreeSettingController],
   providers: [FreeSettingService],
   exports: [FreeSettingService]

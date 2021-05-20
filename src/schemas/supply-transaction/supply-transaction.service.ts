@@ -7,19 +7,23 @@ import { SupplyTransaction, SupplyTransactionDocument } from './schema/supply-tr
 @Injectable()
 export class SupplyTransactionService {
     constructor(
-        @InjectModel(SupplyTransaction.name) private readonly supplyModel: Model<SupplyTransactionDocument>,
+        @InjectModel('Supply_Transaction') private readonly supplyTransactionModel: Model<SupplyTransactionDocument>,
     ){}
 
     async create(createDto : SupplyTransactionDto) : Promise<SupplyTransaction> {
-        const createdUser = new this.supplyModel(createDto);
+        const createdUser = new this.supplyTransactionModel(createDto);
         return createdUser.save();
     }
 
     async findAll() : Promise<SupplyTransaction[]> {
-        return this.supplyModel.find().exec();
+        return this.supplyTransactionModel.find().exec();
     }
 
     async findOneByID(phone) : Promise<SupplyTransaction> {
-        return this.supplyModel.findOne({phone}).exec();
+        return this.supplyTransactionModel.findOne({phone}).exec();
+    }
+    
+    async findSupplyTransactionByDate(myDate) : Promise<any> {
+        return this.supplyTransactionModel.find({dt: {$gte : myDate}/*, action:'sold'*/}).exec();
     }
 }

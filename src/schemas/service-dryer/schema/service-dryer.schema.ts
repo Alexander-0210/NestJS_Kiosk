@@ -3,7 +3,7 @@ import { Document } from 'mongoose';
 
 export type ServiceDryerDocument = ServiceDryer & Document;
 
-@Schema()
+@Schema({autoIndex: true, toJSON: {virtuals: true}})
 export class ServiceDryer {
   @Prop()
   id:number;
@@ -16,3 +16,9 @@ export class ServiceDryer {
 }
 
 export const ServiceDryerSchema = SchemaFactory.createForClass(ServiceDryer);
+
+ServiceDryerSchema.virtual('model_combine', {
+  ref: 'Model',
+  localField:'model_id',
+  foreignField :'Id',
+});

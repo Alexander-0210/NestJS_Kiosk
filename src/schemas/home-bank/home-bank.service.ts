@@ -7,7 +7,7 @@ import { HomeBank, HomeBankDocument } from './schema/home-bank.schema';
 @Injectable()
 export class HomeBankService {
     constructor(
-        @InjectModel(HomeBank.name) private readonly homebankModel: Model<HomeBankDocument>,
+        @InjectModel('home_bank') private readonly homebankModel: Model<HomeBankDocument>,
     ){}
 
     async create(createdDto : HomeBankDto) : Promise<HomeBank> {

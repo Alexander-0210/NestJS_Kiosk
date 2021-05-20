@@ -19,6 +19,10 @@ export class JobService {
     async findAll() : Promise<Job[]> {
         return this.jobModel.find().exec();
     }
+    
+    async findAllWithUserInfo() : Promise<Job[]> {
+        return this.jobModel.find().populate('user_info').populate('program_info').exec();
+    }
 
     async findOneByID(phone) : Promise<Job> {
         return this.jobModel.findOne({phone}).exec();

@@ -3,43 +3,22 @@ import { Document } from 'mongoose';
 
 export type FreeSettingDocument = FreeSetting & Document;
 
-@Schema()
+@Schema({autoIndex: true, toJSON: {virtuals: true}})
 export class FreeSetting {
-  @Prop()
+  @Prop()    
   id:number;
-
-  @Prop()
-  user_id:number;
-
-  @Prop()
-  machine_id:number;
-
-  @Prop()
-  machine_type:number;
-
-  @Prop()
-  program_id:number;
-
-  @Prop()
-  options:number;
-
-  @Prop()
-  price:number;
-
-  @Prop()
-  need_sms:number;
-
-  @Prop()
-  dt:Date;
-
-  @Prop()
-  status:string;
-
-  @Prop()
-  finish_dt:Date;
-
-  @Prop()
-  dryer_used:number;
+  
+  @Prop()    
+  model_id:number;
+  
+  @Prop()    
+  consume_cnt:number;
 }
 
 export const FreeSettingSchema = SchemaFactory.createForClass(FreeSetting);
+
+FreeSettingSchema.virtual('model_combine', {
+  ref: 'Model',
+  localField:'model_id',
+  foreignField :'Id',
+});

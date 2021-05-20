@@ -7,7 +7,7 @@ import { CreditIncome, CreditIncomeDocument } from './schema/credit-income.schem
 @Injectable()
 export class CreditIncomeService {    
     constructor(
-        @InjectModel(CreditIncome.name) private readonly creditModel: Model<CreditIncomeDocument>,
+        @InjectModel('Credit_Income') private readonly creditModel: Model<CreditIncomeDocument>,
     ){}
 
     async create(createDto : CreditIncomeDto) : Promise<CreditIncome> {
@@ -21,5 +21,9 @@ export class CreditIncomeService {
 
     async findOneByID(phone) : Promise<CreditIncome> {
         return this.creditModel.findOne({phone}).exec();
+    }
+
+    async findCreditIncomeByDate(myDate) : Promise<any> {
+        return this.creditModel.find({dt: {$gte : myDate}},'user_id method name email price dt').populate('credit_user', 'phone').exec();
     }
 }

@@ -16,3 +16,4 @@ export class Setting {
 }
 
 export const SettingSchema = SchemaFactory.createForClass(Setting);
+

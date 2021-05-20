@@ -7,7 +7,7 @@ import { ServiceDryer, ServiceDryerDocument } from './schema/service-dryer.schem
 @Injectable()
 export class ServiceDryerService {
     constructor(
-        @InjectModel(ServiceDryer.name) private readonly userModel: Model<ServiceDryerDocument>,
+        @InjectModel('service_dryer') private readonly userModel: Model<ServiceDryerDocument>,
     ){}
 
     async create(createDto : ServiceDryerDto) : Promise<ServiceDryer> {
@@ -17,6 +17,10 @@ export class ServiceDryerService {
 
     async findAll() : Promise<ServiceDryer[]> {
         return this.userModel.find().exec();
+    }
+    
+    async findAllWithModel() : Promise<ServiceDryer[]> {
+        return this.userModel.find().populate('model_combine').exec();
     }
 
     async findOneByID(phone) : Promise<ServiceDryer> {

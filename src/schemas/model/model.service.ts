@@ -7,7 +7,7 @@ import { ModelCls, ModelDocument } from './schema/model.schema';
 @Injectable()
 export class ModelService {
     constructor(
-        @InjectModel(ModelCls.name) private readonly userModel: Model<ModelDocument>,
+        @InjectModel('Model') private readonly userModel: Model<ModelDocument>,
     ){}
 
     async create(createUserDto : ModelDto) : Promise<ModelCls> {

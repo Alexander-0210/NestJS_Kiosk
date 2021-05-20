@@ -5,7 +5,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { CreditIncome, CreditIncomeSchema } from './schema/credit-income.schema';
 
 @Module({
-  imports: [MongooseModule.forFeature([{ name: CreditIncome.name, schema: CreditIncomeSchema }])],
+  imports: [MongooseModule.forFeature([{ name: 'Credit_Income', schema: CreditIncomeSchema }])],
   controllers: [CreditIncomeController],
   providers: [CreditIncomeService],
   exports: [CreditIncomeService]

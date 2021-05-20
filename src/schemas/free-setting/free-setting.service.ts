@@ -7,7 +7,7 @@ import { FreeSetting, FreeSettingDocument } from './schema/free-setting.schema';
 @Injectable()
 export class FreeSettingService {
     constructor(
-        @InjectModel(FreeSetting.name) private readonly settingModel: Model<FreeSettingDocument>,
+        @InjectModel('Free_Setting') private readonly settingModel: Model<FreeSettingDocument>,
     ){}
 
     async create(createUserDto : FreeSettingDto) : Promise<FreeSetting> {
@@ -21,5 +21,9 @@ export class FreeSettingService {
 
     async findOneByID(phone) : Promise<FreeSetting> {
         return this.settingModel.findOne({phone}).exec();
+    }
+    
+    async findAllWithModelType() : Promise<FreeSetting[]> {
+        return this.settingModel.find().populate('model_combine').exec();
     }
 }

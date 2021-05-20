@@ -22,4 +22,9 @@ export class TransactionService {
     async findOneByID(phone) : Promise<Transaction> {
         return this.transactionModel.findOne({phone}).exec();
     }
+
+    async findTransactionsByDate(myDate) : Promise<any> {
+        return this.transactionModel.find({dt: {$gte : myDate}}).exec();
+        //return this.kioskModel.find({},'Id user_id dt').populate('user_phone', 'phone').exec();
+    }
 }

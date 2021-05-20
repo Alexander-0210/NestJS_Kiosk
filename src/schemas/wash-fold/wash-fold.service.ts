@@ -7,7 +7,7 @@ import { WashFold, WashFoldDocument } from './schema/wash-fold.schema';
 @Injectable()
 export class WashFoldService {
     constructor(
-        @InjectModel(WashFold.name) private readonly washFoldModel: Model<WashFoldDocument>,
+        @InjectModel('wash_fold') private readonly washFoldModel: Model<WashFoldDocument>,
     ){}
 
     async create(createDto : WashFoldDto) : Promise<WashFold> {
@@ -21,5 +21,10 @@ export class WashFoldService {
 
     async findOneByID(phone) : Promise<WashFold> {
         return this.washFoldModel.findOne({phone}).exec();
+    }
+
+    
+    async findWashFoldByDate(myDate) : Promise<any> {
+        return this.washFoldModel.find({dt: {$gte : myDate}}).populate('credit_user', 'phone').exec();
     }
 }

@@ -7,7 +7,7 @@ import { Kiosk2Income, Kiosk2IncomeDocument, Kiosk2IncomeSchema } from './schema
 @Injectable()
 export class Kiosk2IncomeService {
     constructor(
-        @InjectModel(Kiosk2Income.name) private readonly kiosk2Model: Model<Kiosk2IncomeDocument>,
+        @InjectModel('Kiosk2_Income') private readonly kiosk2Model: Model<Kiosk2IncomeDocument>,
     ){}
 
     async create(createDto : Kiosk2IncomeDto) : Promise<Kiosk2Income> {
@@ -21,5 +21,10 @@ export class Kiosk2IncomeService {
 
     async findOneByID(phone) : Promise<Kiosk2Income> {
         return this.kiosk2Model.findOne({phone}).exec();
+    }
+    
+    async findKiosk2IncomeByDate(myDate) : Promise<any> {
+        return this.kiosk2Model.find({dt: {$gte : myDate}}).exec();
+        //return this.kioskModel.find({},'Id user_id dt').populate('user_phone', 'phone').exec();
     }
 }

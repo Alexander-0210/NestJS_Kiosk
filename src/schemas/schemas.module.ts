@@ -32,6 +32,7 @@ import { TrackModule } from './track/track.module';
 import { TransactionModule } from './transaction/transaction.module';
 import { UserVerifyModule } from './user-verify/user-verify.module';
 import { WashFoldModule } from './wash-fold/wash-fold.module';
+import { SupplyModule } from './supply/supply.module';
 const routes:Routes = [
     {
         path:'schemas',
@@ -159,7 +160,11 @@ const routes:Routes = [
             {
                 path:'/',
                 module: WashFoldModule
-            }
+            },
+            {
+                path:'/',
+                module: SupplyModule
+            },
         ]
     }
 ]
@@ -170,7 +175,7 @@ const routes:Routes = [
         HomeBankModule,HomeBankStateModule,JobModule,JobFinishedModule,KioskIncomeModule,Kiosk2IncomeModule,
         LogModule,MachineModule,MachineTypeModule,ModelModule,OptionModule,ProgramModule,ProgramCateModule,
         ServiceModule,ServiceDayModule,ServiceDryerModule,SettingModule,SmsModule,SoapModule,SpecialModule,
-        SupplyTransactionModule,TrackModule,TransactionModule,UserVerifyModule,WashFoldModule
+        SupplyTransactionModule,TrackModule,TransactionModule,UserVerifyModule,WashFoldModule, SupplyModule,
     ],
     controllers: [SchemasController]
 })

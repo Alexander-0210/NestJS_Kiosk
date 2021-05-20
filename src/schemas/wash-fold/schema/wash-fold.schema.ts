@@ -9,7 +9,7 @@ export class WashFold {
   id:number;
 
   @Prop()
-  dt:Date;
+  dt:string;
 
   @Prop()
   weight:number;

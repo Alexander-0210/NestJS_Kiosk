@@ -3,7 +3,7 @@ import { Document } from 'mongoose';
 
 export type CreditIncomeDocument = CreditIncome & Document;
 
-@Schema()
+@Schema({autoIndex: true, toJSON: {virtuals: true}})
 export class CreditIncome {
   @Prop()
   id:number;
@@ -27,7 +27,13 @@ export class CreditIncome {
   method:string;
 
   @Prop()
-  dt:Date;
+  dt:string;
 }
 
 export const CreditIncomeSchema = SchemaFactory.createForClass(CreditIncome);
+
+CreditIncomeSchema.virtual('credit_user', {
+  ref: 'User',
+  localField:'user_id',
+  foreignField :'Id',
+});

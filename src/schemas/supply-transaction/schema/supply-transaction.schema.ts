@@ -9,7 +9,7 @@ export class SupplyTransaction {
   id:number;
 
   @Prop()
-  dt:Date;
+  dt:string;
 
   @Prop()
   supply_id:number;

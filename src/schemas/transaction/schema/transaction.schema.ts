@@ -39,7 +39,7 @@ export class Transaction {
   method:string;
 
   @Prop()
-  dt:Date;
+  dt:string;
 }
 
 export const TransactionSchema = SchemaFactory.createForClass(Transaction);

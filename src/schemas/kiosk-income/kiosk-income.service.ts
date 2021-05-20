@@ -20,16 +20,8 @@ export class KioskIncomeService {
     }
     
     async findJoinedUserPhone(myDate) : Promise<any> {
-        //var str = myDate.toString();
-        //return this.kioskModel.find({dt: {$gt: min_date}}).populate('user_phone', 'phone').exec();
-        //return this.kioskModel.find().populate('user_phone', 'phone').exec();
-        //return this.kioskModel.find({Id:{$gte:10}}).populate('user_phone', 'phone').exec();
-        //return this.kioskModel.find({dt:{$gte: new Date('2020-01-01T00:00:00.000Z')}}).exec();
-        //return this.kioskModel.find({user_id:{$gte:10}}).populate('user_phone', 'phone').exec();
-        //return this.kioskModel.find({},'Id user_id dt').populate('user_phone', 'phone').exec();
-        //return this.kioskModel.find({ cnt: { $lt : 5}}).populate('user_phone', 'phone').exec();
         return this.kioskModel.find({dt: {$gte : myDate}}).populate('user_phone', 'phone').exec();
-        return this.kioskModel.find({},'Id user_id dt').populate('user_phone', 'phone').exec();
+        //return this.kioskModel.find({},'Id user_id dt').populate('user_phone', 'phone').exec();
     }
     
     async findByDate(date) : Promise<KioskIncome[]> {
